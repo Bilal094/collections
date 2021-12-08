@@ -1,8 +1,6 @@
-from contextlib import nullcontext
 import random
 
-
-Zakje = []
+mnmList = []
 mnmDictionary = {'oranje': 0, 'blauw': 0, 'groen': 0, 'bruin': 0}
 Kleur = ["oranje", "blauw", "groen", "bruin"]
 
@@ -13,8 +11,9 @@ def nutty(aantal:int):
     global Inhoud
     for x in range(Aantal):
         Inhoud = random.choice(Kleur)
-        Zakje.append(Inhoud)
-    print(Zakje)
+        mnmList.append(Inhoud)
+    mnmList.sort()
+    return print(mnmList)
 
 nutty(Aantal)
 
@@ -31,9 +30,6 @@ def nuttyDict(aantal:int):
             mnmDictionary['groen'] += 1
         if InhoudDict == 'bruin':
             mnmDictionary['bruin'] += 1
-    print(mnmDictionary)
+    return print(mnmDictionary)
 
 nuttyDict(Aantal)
-
-
-
