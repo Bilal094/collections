@@ -1,35 +1,31 @@
 import random
+Kleuren = ["oranje", "blauw", "groen", "bruin"]
+ZakList = []
+ZakDictionary = {"oranje" : 0, "blauw" : 0, "groen" : 0, "bruin" : 0}
+# --------------------------------------------------------------------
 
-mnmList = []
-mnmDictionary = {'oranje': 0, 'blauw': 0, 'groen': 0, 'bruin': 0}
-Kleur = ["oranje", "blauw", "groen", "bruin"]
-
-Aantal = int(input('Hoeveel M&Ms moeten er worden gevuld? '))
-
-
-def nutty(aantal:int):
+def MnM(aantal):
     global Inhoud
-    for x in range(Aantal):
-        Inhoud = random.choice(Kleur)
-        mnmList.append(Inhoud)
-    mnmList.sort()
-    return print(mnmList)
+    for x in range(aantal):
+        Willekeurig = random.randrange(0,4)
+        Inhoud = Kleuren[Willekeurig]
+        ZakList.append(Inhoud)
+        ZakList.sort()
+        if Inhoud == 'oranje':
+            ZakDictionary['oranje'] += 1
+        if Inhoud == 'blauw':
+            ZakDictionary['blauw'] += 1
+        if Inhoud == 'groen':
+            ZakDictionary['groen'] += 1
+        if Inhoud == 'bruin':
+            ZakDictionary['bruin'] += 1
+    return ZakDictionary, ZakList
 
-nutty(Aantal)
 
 
-def nuttyDict(aantal:int):
-    global InhoudDict
-    for x in range(Aantal):
-        InhoudDict = random.choice(Kleur)
-        if InhoudDict == 'oranje':
-            mnmDictionary['oranje'] += 1
-        if InhoudDict == 'blauw':
-            mnmDictionary['blauw'] += 1
-        if InhoudDict == 'groen':
-            mnmDictionary['groen'] += 1
-        if InhoudDict == 'bruin':
-            mnmDictionary['bruin'] += 1
-    return print(mnmDictionary)
 
-nuttyDict(Aantal)
+
+Aantal = int(input('Hoeveel M&Ms wilt u? '))
+
+print(MnM(Aantal))
+
