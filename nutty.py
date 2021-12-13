@@ -1,31 +1,32 @@
 import random
 Kleuren = ["oranje", "blauw", "groen", "bruin"]
 ZakList = []
-ZakDictionary = {"oranje" : 0, "blauw" : 0, "groen" : 0, "bruin" : 0}
+ZakDictionary = {}
 # --------------------------------------------------------------------
 
-def MnM(aantal):
-    global Inhoud
+def List(aantal):
     for x in range(aantal):
-        Willekeurig = random.randrange(0,4)
-        Inhoud = Kleuren[Willekeurig]
+        Inhoud = random.choice(Kleuren)
         ZakList.append(Inhoud)
-        ZakList.sort()
-        if Inhoud == 'oranje':
-            ZakDictionary['oranje'] += 1
-        if Inhoud == 'blauw':
-            ZakDictionary['blauw'] += 1
-        if Inhoud == 'groen':
-            ZakDictionary['groen'] += 1
-        if Inhoud == 'bruin':
-            ZakDictionary['bruin'] += 1
-    return ZakDictionary, ZakList
+        
+    return ZakList
+
+def Dictionary(aantal):
+    for x in range(aantal):
+        Inhoud = random.choice(Kleuren)
+        if Inhoud in ZakDictionary.keys():
+            ZakDictionary[Inhoud] += 1
+        else:
+            ZakDictionary[Inhoud] = 1
+    return ZakDictionary
+
+def Sorteren(lijst):
+    lijst.sort()
+    return lijst
 
 
 
-
-
-Aantal = int(input('Hoeveel M&Ms wilt u? '))
-
-print(MnM(Aantal))
-
+Aantal = int(input('Hoeveel M&Ms wil je hebben? '))
+List(Aantal)
+print(Sorteren(ZakList))
+print(Dictionary(Aantal))
